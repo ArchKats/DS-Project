@@ -12,6 +12,7 @@ Array::Array(std::ifstream& file){
 
     while(file >> entry){ // Loop that continues till every word is imported into the array
         entry = better2low(entry.c_str()); // Converting the entry string into lower case for more information check the local function library
+        better2clear(entry);
         if(NUM==0){ // case for empty Array
             append(entry);
         }

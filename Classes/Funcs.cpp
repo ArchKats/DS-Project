@@ -1,4 +1,5 @@
 #include<cstring>
+#include<algorithm>
 
 char* better2low(const char* line){
 
@@ -9,4 +10,8 @@ char* better2low(const char* line){
     }
     return temp;
     
+}
+
+void better2clear(std::string& stri){
+    stri.erase (std::remove_if (stri.begin (), stri.end (), ispunct), stri.end ());
 }

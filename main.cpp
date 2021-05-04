@@ -5,11 +5,12 @@
 
 int main(){
     std::ifstream file;
-    file.open("Classes/test.txt");
+    file.open("test.txt");
+    std::cout << "FILE OPEN";
 
 
     Array l(file);
 
-    l.print();
+    l.print(); 
     
 }
