@@ -1,8 +1,8 @@
-#include<iostream>
-#include<fstream>
-
 #ifndef ARRAY_H
 #define ARRAY_H
+
+#include<iostream>
+#include<fstream>
 
 class Array{
 

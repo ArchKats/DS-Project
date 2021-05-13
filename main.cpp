@@ -3,14 +3,17 @@
 #include<iostream>
 #include<fstream>
 
+
 int main(){
     std::ifstream file;
     file.open("test.txt");
-    std::cout << "FILE OPEN";
 
+    std::cout << "FILE OPEN";
 
     Array l(file);
 
     l.print(); 
     
+    std::cout << "FULE";
+    remove("Temp.txt");
 }

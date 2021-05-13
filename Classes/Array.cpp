@@ -1,18 +1,20 @@
 #include<iostream>
 #include<fstream>
-#include"Funcs.cpp"
 #include<cstring>
 #include"Array.h"
+#include"../Funcs.h"
 
 
-Array::Array(std::ifstream& file){
+Array::Array(std::ifstream& f){
+
+    std::ifstream file = ClearFile(f);
 
     std::string entry; // String Variable that will contain each temporary word of the file
     NUM = 0; // Reseting the size of the array
 
     while(file >> entry){ // Loop that continues till every word is imported into the array
         entry = better2low(entry.c_str()); // Converting the entry string into lower case for more information check the local function library
-        better2clear(entry);
+        //std::cout << NUM << " " << entry << std::endl; // Temporary output
         if(NUM==0){ // case for empty Array
             append(entry);
         }
@@ -23,6 +25,7 @@ Array::Array(std::ifstream& file){
             }
             else{ //if(NUM<2) GARBAGE
                 append(entry); // inserting the entry string into the array
+                std::cout << NUM << std::endl;
             }
         }
 
@@ -67,13 +70,14 @@ int Array::search(const std::string key){ // Just a linear search of the key str
     for(int i=0;i<NUM;i++){
         if(WORDS[i]==key) return i; // Case in which the key string was found
     }
-    return -1; // Case in which the key string wasnt found in the array
+    return -1; // b
 }
 
 
 void Array::print(){
+    std::ofstream output("Output.txt");
     for(int i=0; i<NUM; i++){
-        std::cout<<i<<"."<<WORDS[i]<<" "<<FREQ[i]<<std::endl;
+        output<<i<<"."<<WORDS[i]<<" "<<FREQ[i]<<std::endl;
     }
-    
+    output.close();
 }
