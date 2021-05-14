@@ -12,23 +12,20 @@ Array::Array(std::ifstream& f){
     std::string entry; // String Variable that will contain each temporary word of the file
     NUM = 0; // Reseting the size of the array
 
+    file >> entry;
+    entry = better2low(entry.c_str());
+    append(entry);
     while(file >> entry){ // Loop that continues till every word is imported into the array
         entry = better2low(entry.c_str()); // Converting the entry string into lower case for more information check the local function library
         //std::cout << NUM << " " << entry << std::endl; // Temporary output
-        if(NUM==0){ // case for empty Array
-            append(entry);
+        std::cout << NUM <<" "<< entry<< std::endl;
+        int pos = search(entry);
+        if(pos!=-1){ // case for the word being found in the array
+            FREQ[pos]++; // increasing the frequency of the word
         }
-        else{
-            if(search(entry)!=-1){ // case for the word being found in the array
-                int pos = search(entry);
-                FREQ[pos]++; // increasing the frequency of the word
-            }
-            else{ //if(NUM<2) GARBAGE
-                append(entry); // inserting the entry string into the array
-                std::cout << NUM << std::endl;
-            }
+        else{ //if(NUM<2) GARBAGE
+            append(entry); // inserting the entry string into the array
         }
-
     }
     std::cout << "Array's Construction was Successful" << std::endl;
 }
