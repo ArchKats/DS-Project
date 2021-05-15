@@ -19,7 +19,7 @@ Array::Array(std::ifstream& f){
 
     while(file >> entry){ // Loop that continues till every word is imported into the array
         entry = better2low(entry.c_str()); // Converting the entry string into lower case for more information check the local function library
-        int pos = search(entry); // Searches for the entry in the array, if it is found the function returns the position of the word into the integer variable pos, if it was not found it returns the negative value -1 into the pos variable 
+        int pos = search(entry.c_str()); // Searches for the entry in the array, if it is found the function returns the position of the word into the integer variable pos, if it was not found it returns the negative value -1 into the pos variable 
         if(pos!=-1){ // case for the word being found in the array
             FREQ[pos]++; // increasing the frequency of the word
         }
@@ -55,12 +55,12 @@ void Array::append(const std::string entry){
     FREQ = int_temp;
 }
 
-void Array::remove(const std::string del){
+void Array::remove(const char* del){
 
     //Temporary arrays that are diminished-by-one from the size of the original arrays
 
-    int pos = search(better2low(del.c_str())); // Search for the position of the word
-    
+    int pos = search(better2low(del)); // Search for the position of the word
+
     if(pos!=-1){ // Case of the position being found
         NUM--; // diminishing the integer that represents the size of the array
         std::string* string_temp = new std::string[NUM];
@@ -85,9 +85,10 @@ void Array::remove(const std::string del){
         FREQ = int_temp;
     }
     else std::cout << "!!! ERROR WORD WAS NOT FOUND IN ARRAY !!!"; // Error message for the case in which the position of the word was not found
+    return;
 }
 
-int Array::search(const std::string key){ // Just a linear search of the key string
+int Array::search(const char* key){ // Just a linear search of the key string
     for(int i=0;i<NUM;i++){
         if(WORDS[i]==key) return i; // Case in which the key string was found
     }
@@ -95,7 +96,7 @@ int Array::search(const std::string key){ // Just a linear search of the key str
 }
 
 
-void Array::print(){
+void Array::print(){ // TEMPORARY
     std::ofstream output("Output.txt");
     for(int i=0; i<NUM; i++){
         output<<i<<"."<<WORDS[i]<<" "<<FREQ[i]<<std::endl;
