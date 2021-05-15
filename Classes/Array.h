@@ -15,7 +15,7 @@ class Array{
     public:
 
     Array(std::ifstream&); // Constructor for unsorted array (it uses a file as a parameter and each word (and each word's |uses|))
-    ~Array(); // Destructor for Unsorted Array Class
+    ~Array(); // Destructor for Unsorted Array Class.
 
     // Getters for the private members of the class //
     int GetNum() const { return NUM;}

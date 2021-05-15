@@ -47,7 +47,7 @@ void Array::append(const std::string entry){
     string_temp[NUM-1]=entry;
     int_temp[NUM-1]=1;
     
-    // Deletion of the previous arrays
+    // Deletion of the previous arrays.
     delete[] WORDS;
     delete[] FREQ;
     // Copying the temporary arrays into the new ones
