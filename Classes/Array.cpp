@@ -36,7 +36,7 @@ Array::~Array(){
 }
 
 void Array::append(const std::string entry){
-    NUM++; // increasing the integer that represents the size of the array.
+    NUM++; // increasing the integer that represents the size of the array
     // Temporary arrays that are copies of the original arrays (WORDS and FREQ)
     std::string* string_temp = new std::string[NUM];
     int* int_temp = new int[NUM];
