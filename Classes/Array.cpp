@@ -8,7 +8,6 @@
 Array::Array(std::ifstream& f){
 
     std::ifstream file = ClearFile(f); // Creation of a punctuation-free copy of the initial file, This probably at some point will be moved to the main function
-
     std::string entry; // String Variable that will contain each temporary word of the file
     NUM = 0; // Reseting the size of the array
 
@@ -28,6 +27,7 @@ Array::Array(std::ifstream& f){
         }
     }
     std::cout << "Array's Construction was Successful" << std::endl; // Temporary output to sign the Finishing of the Array's construction
+    std::remove("Temp.txt"); // Deletes the temporary file
 }
 
 Array::~Array(){ 
@@ -45,7 +45,7 @@ void Array::append(const std::string entry){
         int_temp[i] = FREQ[i];
     }
     string_temp[NUM-1]=entry;
-    int_temp[NUM-1]=0;
+    int_temp[NUM-1]=1;
     
     // Deletion of the previous arrays
     delete[] WORDS;
