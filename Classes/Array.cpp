@@ -6,6 +6,8 @@
 
 
 Array::Array(){
+    WORDS = nullptr;
+    FREQ = nullptr;
     NUM = 0;
 }
 

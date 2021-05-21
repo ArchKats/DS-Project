@@ -20,7 +20,7 @@ class Array{
 
     // Getters for the private members of the class //
     int GetNum() const                  { return NUM;     }
-    std::string GetName(int i) const    { return WORDS[i];}
+    std::string GetWord(int i) const    { return WORDS[i];}
     int GetFrequency(int i) const       { return FREQ[i]; }
     //                                              //
 
@@ -32,7 +32,13 @@ class Array{
     void print(); // Temporary method that prints the array in a file
 
     //Overload of some operators to represent some of the upper methods
-    void operator=(char * Fname)          { Array(Fname); }
+    void operator=(char * Fname){ 
+        Array temp(Fname); 
+        NUM = temp.GetNum(); 
+        WORDS = new std::string[NUM]; 
+        FREQ = new int[NUM]; 
+        for (int i = 0; i < NUM; i++) { WORDS[i] = temp.GetWord(i); FREQ[i]= temp.GetFrequency(i); }
+    }
     void operator+=(const char* Entry)    { append(Entry);}
     void operator-=(const char* Rem)      { remove(Rem);  } 
 
