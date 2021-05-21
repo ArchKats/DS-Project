@@ -54,4 +54,4 @@ void createQ(string* Q, int size,char * file_name)
 	ifs.close();
 	remove("Temp.txt");
 
-} //
+} 
