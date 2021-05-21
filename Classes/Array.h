@@ -19,9 +19,9 @@ class Array{
     ~Array(); // Destructor for Unsorted Array Class.
 
     // Getters for the private members of the class //
-    int GetNum() const { return NUM;}
-    std::string GetName(int i) const { return WORDS[i]; }
-    int GetFrequency(int i) const { return FREQ[i]; }
+    int GetNum() const                  { return NUM;     }
+    std::string GetName(int i) const    { return WORDS[i];}
+    int GetFrequency(int i) const       { return FREQ[i]; }
     //                                              //
 
 
@@ -30,6 +30,12 @@ class Array{
     int search(const char*); // Function that searches for the parameter string and returns a positive integer which represents the position of the word if it is found or returns the negative integer -1 if the word is not found
 
     void print(); // Temporary method that prints the array in a file
+
+    //Overload of some operators to represent some of the upper methods
+    void operator=(char * Fname)          { Array(Fname); }
+    void operator+=(const char* Entry)    { append(Entry);}
+    void operator-=(const char* Rem)      { remove(Rem);  } 
+
 
 };
 
