@@ -37,6 +37,7 @@ void SortedArray::append(const char* entry){
 
     if(NUM!=0){
         entrypoint = search(entry, true)+1;
+        std::cout<<entrypoint<<" "<<NUM+1<<std::endl;
     }
     else entrypoint = 0;
 
@@ -97,9 +98,9 @@ int SortedArray::BinSearch(int start, int end, const char* entry, bool entry_POS
         }
     }
     if(entry_POS){
-        std::cout<<start<<" "<<end;
-        if(WORDS[start]>entry) {std::cout<<"BEEP"; return start;}
-        if(WORDS[end]>entry)   {std::cout<<"BOOP"; return end;}
+        // Firststd::cout<<start<<" "<<end;
+        if(WORDS[start]<entry) return start;
+        else return start-1;
     }
     return -1;
 }
