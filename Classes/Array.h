@@ -2,11 +2,10 @@
 #define ARRAY_H
 
 #include<iostream>
-#include<fstream>
 
 class Array{
 
-    private:
+    protected:
 
     std::string* WORDS; // The words 
     int* FREQ; // Frequency of each word
@@ -25,9 +24,9 @@ class Array{
     //                                              //
 
 
-    void append(const char*); // Method that increases the size of the array
+    virtual void append(const char*); // Method that increases the size of the array
     void remove(const char*); // Method that removes a string from the array
-    int search(const char*); // Function that searches for the parameter string and returns a positive integer which represents the position of the word if it is found or returns the negative integer -1 if the word is not found
+    virtual int search(const char*); // Function that searches for the parameter string and returns a positive integer which represents the position of the word if it is found or returns the negative integer -1 if the word is not found
 
     void print(); // Temporary method that prints the array in a file
 
