@@ -6,33 +6,21 @@
 #include<fstream>
 
 class SortedArray: public Array{
-    /*private:
-
-    std::string* WORDS;
-    int* FREQ;
-    int NUM;
-    */
+    // The Sorted Array inherits the (Protected) Variables as well as their Getters and 
+    // the remove method that contains the virtual Search method that is derived
     public:
 
-    SortedArray():Array(){}      //Empty Constructor
-    SortedArray(char*); // Constructor for the SortedArray that uses a FileStream as a parameter 
-    SortedArray(Array&);         // Constructor for the SortedArray that uses a Array object as a parameter and pretty much it just sorts the array by using 
+    SortedArray():Array(){}              //Empty Constructor
+    SortedArray(char*);                 // Constructor for the SortedArray that uses a FileStream as a parameter 
+    SortedArray(Array&);                // Constructor for the SortedArray that uses a Array object as a parameter and pretty much it just sorts the array by using 
 
-    /* The Sorted Array Class Inherints the Getters of the Normal Array*/
-    /*int GetNum() const { return NUM;}
-    std::string GetName(int i) const { return WORDS[i]; }
-    int GetFrequency(int i) const { return FREQ[i]; }*/
-    //                                 //
+    void append(const char*);           // appends a new word into the sorted array by using the Insertion Sort
+    int search(const char*, bool);      // Uses binary search to search a word in the sorted array, takes a boolean that if true and the word is not found in the 
+    int search(const char* entry);      // Automatically sets the boolean as false
 
-    void append(const char*); // appends a new word into the sorted array by using the Insertion Sort
-    //void remove(const char*); // removes a word from the sorted array
-    int search(const char*, bool);  // Uses binary search to search a word in the sorted array
-    int search(const char* entry);
 
+    // Private Recursive Binary Search (Unaccesible from an object)
     private: int BinSearch(int start, int end, const char* entry, bool entry_POS); 
-
-    
-
 };
 
 #endif
