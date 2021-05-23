@@ -31,6 +31,31 @@ SortedArray::SortedArray(char* filename){           // Pretty Much a copy of the
 
 }
 
+SortedArray::SortedArray(const Array& Arr){         // Sorts an Array (object) into a SortedArray (object)
+    NUM = Arr.GetNum();                             // Copies the Variables from the (Regular) Array (object)
+    WORDS = new std::string[NUM];                   // into the Sorted Array (object) 
+    FREQ = new int[NUM]; 
+    for (int i = 0; i < NUM; i++) { 
+        WORDS[i] = Arr.GetWord(i); 
+        FREQ[i]= Arr.GetFrequency(i); 
+    }
+
+    int int_temp;                                   // Good'ol Bubble Sort
+    std::string string_temp;                        // O(n^2) but I don't think it "deserves" a better
+    for(int i=0; i < NUM-1; i++){                   // and faster Sorting Algorithm
+        for(int j=1; j > NUM-i-1; j++){
+            if(WORDS[j]>WORDS[j-1]){
+                string_temp = WORDS[j];
+                WORDS[j] = WORDS[j-1];
+                WORDS[j-1] = string_temp;
+                int_temp = FREQ[j];
+                FREQ[j] = FREQ[j-1];
+                FREQ[j-1] = int_temp;
+            }
+        }
+    } 
+}
+
 void SortedArray::append(const char* entry){
 
     int entrypoint;                                 // Represents the position in which the entry word will enter

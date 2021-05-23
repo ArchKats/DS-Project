@@ -31,19 +31,9 @@ class Array{
     void print();                           // Temporary method that prints the array in a file
 
     //Overload of some operators to represent some of the upper methods
-    void operator=(char * Fname){ 
-        Array temp(Fname); 
-        NUM = temp.GetNum(); 
-        WORDS = new std::string[NUM]; 
-        FREQ = new int[NUM]; 
-        for (int i = 0; i < NUM; i++) { WORDS[i] = temp.GetWord(i); FREQ[i]= temp.GetFrequency(i); }
-    }
-    void operator+=(const char* Entry)    { append(Entry);}
-    void operator-=(const char* Rem)      { remove(Rem);  } 
-
-
+    void operator=(char * Filename);
+    void operator+=(const char* Word);
+    void operator-=(const char* Word);
 };
-
-
 
 #endif

@@ -12,7 +12,7 @@ class SortedArray: public Array{
 
     SortedArray():Array(){}              //Empty Constructor
     SortedArray(char*);                 // Constructor for the SortedArray that uses a FileStream as a parameter 
-    SortedArray(Array&);                // Constructor for the SortedArray that uses a Array object as a parameter and pretty much it just sorts the array by using 
+    SortedArray(const Array&);                // Constructor for the SortedArray that uses a Array object as a parameter and pretty much it just sorts the array by using 
 
     void append(const char*);           // appends a new word into the sorted array by using the Insertion Sort
     int search(const char*, bool);      // Uses binary search to search a word in the sorted array, takes a boolean that if true and the word is not found in the 

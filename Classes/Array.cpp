@@ -105,7 +105,6 @@ int Array::search(const char* key){                     // Just a linear search 
     return -1;                                          // Case in which the key string was not found
 }
 
-
 void Array::print(){ // TEMPORARY
     std::ofstream output("Output.txt");
     for(int i=0; i<NUM; i++){
@@ -113,3 +112,17 @@ void Array::print(){ // TEMPORARY
     }
     output.close();
 }
+
+void Array::operator=(char * Fname){
+    Array temp(Fname); 
+    NUM = temp.GetNum(); 
+    WORDS = new std::string[NUM]; 
+    FREQ = new int[NUM]; 
+    for (int i = 0; i < NUM; i++) { 
+        WORDS[i] = temp.GetWord(i); 
+        FREQ[i]= temp.GetFrequency(i); 
+    } 
+}
+
+void Array::operator+=(const char* Entry){ append(Entry);}
+void Array::operator-=(const char* Rem)  { remove(Rem);  }
