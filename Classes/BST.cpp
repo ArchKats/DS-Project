@@ -16,7 +16,7 @@ BST::BST(char* fname){                                                          
     NUM = 0;                                                                        //         it appends it in the BST correctly (inorder) and at the end of the construction it
     file >> entry;                                                                  //         it prints a message and deletes the Temporary file 
     entry = My::better2low(entry.c_str());
-    append(entry.c_str());
+    root = new node(entry.c_str());
 
     while(file >> entry){
         entry = My::better2low(entry.c_str());
@@ -40,7 +40,7 @@ void BST::deleteTree(node* r){
 }
 
 bool BST::append(const char* entry){                                                // The append method returns the boolean value true if the entry was Successfully inserted into the BST 
-    if(root == nullptr){                                                            // or false if the entry was not succesfull
+    if(root == nullptr){                                                           // or false if the entry was not succesfull
         root = new node(entry);                                                     // the Append method checks if the tree is empty (no root), if
         return true;                                                                // it finds that there is no root it appends the entry as the root
     }
@@ -60,7 +60,7 @@ bool BST::append(node* ND, const char* entry){
         }
         return append(ND->right, entry);
     }
-    else{
+    else{ 
         if(ND->left==nullptr){
             ND->left = new node(entry);
             ND->left->parent = ND;
@@ -136,7 +136,7 @@ node* BST::remove(node* tree, const char* key)
 // They all print the Words and Frequencies that are contained in the Nodes of the BST
 
 // Inorder left -> parent -> right
-node* inorder(node* tree){                                                          
+void BST::inorder(node* tree){                                                          
     if(tree==nullptr) return;
 
     inorder(tree->left);
@@ -145,19 +145,19 @@ node* inorder(node* tree){
 }
 
 // Preorder parent -> left -> right
-node* preorder(node* tree){
+void BST::preorder(node* tree){
     if(tree==nullptr) return;
 
     std::cout<< tree->Word <<" "<< tree->Frequency<< std::endl;
-    inorder(tree->left);
-    inorder(tree->right);
+    preorder(tree->left);
+    preorder(tree->right);
 }
 
 // Preorder left -> right -> parent
-node* postorder(node* tree){
+void BST::postorder(node* tree){
     if(tree==nullptr) return;
 
-    inorder(tree->left);
-    inorder(tree->right);
+    postorder(tree->left);
+    postorder(tree->right);
     std::cout<< tree->Word <<" "<< tree->Frequency<< std::endl;
 }

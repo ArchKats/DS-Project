@@ -37,9 +37,9 @@ class BST{
 
     void print();
 
-    node* inorder(node*);                       // Prints the Words and Frequencies of the BST Inorder (recursively)
-    node* preorder(node*);                      // Prints the Words and Frequencies of the BST Preorder (recursively)
-    node* postorder(node*);                     // Prints the Words and Frequencies of the BST Postorder (recursively)
+    void inorder(node*);                       // Prints the Words and Frequencies of the BST Inorder (recursively)
+    void preorder(node*);                      // Prints the Words and Frequencies of the BST Preorder (recursively)
+    void postorder(node*);                     // Prints the Words and Frequencies of the BST Postorder (recursively)
 
     // Recursive functions that I believe should be private
     // Each one is recursive function that is called in one of the previous methods
