@@ -21,29 +21,31 @@ struct node{
 class BST{
 
     protected:
-    node * root;
-    int NUM;
+
+    node *root;                                 // Root of the Binary Search Tree
+    int   NUM;                                  // Number of the BST's nodes
 
     public:
 
-    BST();
-    BST(char *);
-    ~BST();
+    BST();                                      // Blank Constructor for the BST
+    BST(char *);                                // Constructor for the BST (Uses a filename as a parameter)
+    ~BST();                                     // Destructor for the Binary Search Tree
 
-    bool append(const char*);
-    node* search(const char*);
-    void remove(const char*);
+    bool append(const char*);                   // Method that inputs a Word into the BST
+    node* search(const char*);                  // Method that searches the BST for a word
+    void remove(const char*);                   // Method that removes a word from the BST
+
     void print();
 
-    void inorder();
-    void preorder();
-    void postorder();
+    node* inorder(node*);                       // Prints the Words and Frequencies of the BST Inorder (recursively)
+    node* preorder(node*);                      // Prints the Words and Frequencies of the BST Preorder (recursively)
+    node* postorder(node*);                     // Prints the Words and Frequencies of the BST Postorder (recursively)
 
+    // Recursive functions that I believe should be private
+    // Each one is recursive function that is called in one of the previous methods
     private: bool append(node*, const char*);
     private: void deleteTree(node*);
-    private: void print(node*);
-
-
+    private: node* remove(node*, const char*);
 };
 
 #endif
