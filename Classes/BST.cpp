@@ -17,6 +17,7 @@ BST::BST(char* fname){                                                          
     file >> entry;                                                                  //         it prints a message and deletes the Temporary file 
     entry = My::better2low(entry.c_str());
     root = new node(entry.c_str());
+    NUM++;
 
     while(file >> entry){
         entry = My::better2low(entry.c_str());
@@ -96,7 +97,8 @@ void BST::print(){                                                              
 }
 
 void BST::remove(const char* key){                                                  // Calls the recursive remove function from the root
-    remove(root, key);
+    root = remove(root, key);
+    std::cout<<"removed"<<key<<std::endl;
 }
 
 node* BST::remove(node* tree, const char* key)
@@ -124,11 +126,14 @@ node* BST::remove(node* tree, const char* key)
             free(tree);
             return temp;
         }
+        else{
+            node* temp = Ever("last", tree->right);
+            tree->Word = temp->Word;
+            tree->Frequency = temp->Frequency;
+            tree->right = remove(tree->right, temp->Word.c_str());
+
+        }
  
-        
-        //struct node* temp = minValueNode(tree->right);
-        //tree->key = temp->key;
-        //tree->right = remove(tree->right, temp->Word);
     }
     return tree;
 }
@@ -136,8 +141,8 @@ node* BST::remove(node* tree, const char* key)
 // They all print the Words and Frequencies that are contained in the Nodes of the BST
 
 // Inorder left -> parent -> right
-void BST::inorder(node* tree){                                                          
-    if(tree==nullptr) return;
+void BST::inorder(node* tree){ 
+    if(tree==nullptr) return;                                                         
 
     inorder(tree->left);
     std::cout<< tree->Word <<" "<< tree->Frequency<< std::endl;
@@ -160,4 +165,17 @@ void BST::postorder(node* tree){
     postorder(tree->left);
     postorder(tree->right);
     std::cout<< tree->Word <<" "<< tree->Frequency<< std::endl;
+}
+
+node* BST::Ever(const char* Dir, node* r){
+    if(r==nullptr) return r;
+    node* temp = r;
+
+    if(Dir==(char*)"last"){
+        while(temp && temp->left) temp = temp->left;
+    }
+    else if(Dir==(char*)"first"){
+        while(temp && temp->right) temp = temp->right;
+    }
+    return temp;
 }

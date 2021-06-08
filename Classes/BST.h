@@ -13,9 +13,10 @@ struct node{
     node *right;
     node *parent;
 
+    int height;
     // Struct Constructors
-    node(){Word = nullptr; left = nullptr; right = nullptr; parent = nullptr;}
-    node(const char* Stemp) { Word = Stemp; Frequency = 1; left = nullptr; right = nullptr; parent = nullptr;}
+    node(){ Word = nullptr; left = nullptr; right = nullptr; parent = nullptr;}
+    node(const char* Stemp) { Word = Stemp; Frequency = 1; left = nullptr; right = nullptr; parent = nullptr; height = 0;}
 };
 
 class BST{
@@ -31,21 +32,23 @@ class BST{
     BST(char *);                                // Constructor for the BST (Uses a filename as a parameter)
     ~BST();                                     // Destructor for the Binary Search Tree
 
-    bool append(const char*);                   // Method that inputs a Word into the BST
+    bool virtual append(const char*);                   // Method that inputs a Word into the BST
     node* search(const char*);                  // Method that searches the BST for a word
     void remove(const char*);                   // Method that removes a word from the BST
 
     void print();
 
-    void inorder(node*);                       // Prints the Words and Frequencies of the BST Inorder (recursively)
+    void inorder(node*);                        // Prints the Words and Frequencies of the BST Inorder (recursively)
     void preorder(node*);                      // Prints the Words and Frequencies of the BST Preorder (recursively)
     void postorder(node*);                     // Prints the Words and Frequencies of the BST Postorder (recursively)
 
     // Recursive functions that I believe should be private
     // Each one is recursive function that is called in one of the previous methods
-    private: bool append(node*, const char*);
-    private: void deleteTree(node*);
-    private: node* remove(node*, const char*);
+    protected: bool append(node*, const char*);
+    protected: void deleteTree(node*);
+    protected: virtual node* remove(node*, const char*);
+
+    protected: node* Ever(const char*, node*);
 };
 
 #endif
