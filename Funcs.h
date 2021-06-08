@@ -5,6 +5,7 @@
 #include<iostream>
 #include<algorithm>
 #include<fstream>
+#include"Classes/BST.h"
 
 /* Better2low is a function that transofrms the Uppercase letters of a string into lower case */
 namespace My{
@@ -37,6 +38,18 @@ static std::ifstream ClearFile(const char* filename) {
     
 } 
 
+template<class T>
+static T max(const T a, const T b){
+    if(a>b) return a;
+    else return b;
 }
 
+template<class T>
+static T min(const T a, const T b){
+    if(a>b) return b;
+    else return a;
+}
+
+
+}
 #endif
