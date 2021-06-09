@@ -50,6 +50,5 @@ static T min(const T a, const T b){
     else return a;
 }
 
-
 }
 #endif

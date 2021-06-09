@@ -17,14 +17,8 @@ SortedArray::SortedArray(char* filename){           // Pretty Much a copy of the
     append(entry.c_str());
 
     while(file >> entry){                           // Loop that continues till every word is imported into the array
-        entry = My::better2low(entry.c_str());      // Converting the entry string into lower case for more information check the local function library
-        int pos = search(entry.c_str());            // Searches for the entry in the array, if it is found the function returns the position of the word into the integer variable pos, if it was not found it returns the negative value -1 into the pos variable 
-        if(pos!=-1){                                // case for the word being found in the array
-            FREQ[pos]++;                            // increasing the frequency of the word
-        }
-        else{                                       // case for the word not being found in the array and thus appening it into the array
-            append(entry.c_str());                  // inserting the entry string into the array
-        }
+        entry = My::better2low(entry.c_str());      // Converting the entry string into lower case for more information check the local function library    
+        append(entry.c_str());                      // inserting the entry string into the array
     }
     std::cout << "Sorted Array's Construction was Successful" << std::endl; 
     std::remove("Temp.txt");                        // Deletes the temporary file
@@ -57,6 +51,12 @@ SortedArray::SortedArray(const Array& Arr){         // Sorts an Array (object) i
 }
 
 void SortedArray::append(const char* entry){
+
+    int pos = search(entry);                    // Searches for the entry in the array, if it is found the function returns the position of the word into the integer variable pos, if it was not found it returns the negative value -1 into the pos variable 
+    if(pos!=-1){                                // case for the word being found in the array
+        FREQ[pos]++;                            // increasing the frequency of the word
+        return;
+    }
 
     int entrypoint;                                 // Represents the position in which the entry word will enter
 

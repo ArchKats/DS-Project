@@ -1,7 +1,12 @@
+#include<iostream>
+
 #ifndef ARRAY_H
 #define ARRAY_H
 
-#include<iostream>
+/* A Class that represents an (unsorted) Array that contains for each item contains a String (Word) and the Frequency 
+   (Times this word was inserted in the array). The Array can either be constructed manually or by declaring the object
+    with a filename as a parameter (More information about it on the implimentation file).                          
+*/
 
 class Array{
 
@@ -17,10 +22,10 @@ class Array{
     Array(char*);                           // Constructor for unsorted array (Uses a filename as a parameter)
     ~Array();                               // Destructor for Unsorted Array Class.
 
-    // Getters for the private members of the class //
-    int GetNum() const                  { return NUM;     }
+    // Getters for the protected members of the class //
+    int GetNum()               const    { return NUM;     }
     std::string GetWord(int i) const    { return WORDS[i];}
-    int GetFrequency(int i) const       { return FREQ[i]; }
+    int GetFrequency(int i)    const    { return FREQ[i]; }
     //                                              //
 
 
@@ -31,7 +36,6 @@ class Array{
     void print();                           // Temporary method that prints the array in a file
 
     //Overload of some operators to represent some of the upper methods
-    void operator=(char * Filename);
     void operator+=(const char* Word);
     void operator-=(const char* Word);
 };

@@ -31,6 +31,18 @@ BST::~BST(){
     deleteTree(root);                                                               // Uses the recursive function deleteTree to delete the entire tree (More on that down) 
 }
 
+std::string BST::GetWord(const node* r){
+    return r->Word;
+}
+
+int BST::GetFrequency(const node* r){
+    return r->Frequency;
+}
+
+int BST::GetNUM(){
+    return NUM;
+}
+
 void BST::deleteTree(node* r){
     if(r!=nullptr){                                                                 // Recursively deletes each node of the tree in Postorder
         deleteTree(r->left);
@@ -98,7 +110,6 @@ void BST::print(){                                                              
 
 void BST::remove(const char* key){                                                  // Calls the recursive remove function from the root
     root = remove(root, key);
-    std::cout<<"removed"<<key<<std::endl;
 }
 
 node* BST::remove(node* tree, const char* key)

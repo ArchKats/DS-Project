@@ -23,7 +23,6 @@ AVL::AVL(char* fname){
 
 bool AVL::append(const char* entry){
     root = append(root, entry, nullptr);
-    //std::cout<<root->Word<<std::endl;std::cin.ignore();
     return true;
 }
 
@@ -88,20 +87,16 @@ node* AVL::Balancing(node* r){
     r->height = 1 + My::max<int>(getHeight(r->left), getHeight(r->right));
 
     if(getBalance(r)>1 && getBalance(r->left)==1){
-        //std::cout<<r->Word<<" HAM "<<NUM<<std::endl;
         r=rightRotate(r);
     }
     else if(getBalance(r)<-1 && getBalance(r->right)==-1){
-        //std::cout<<r->Word<<" HBM "<<NUM<<std::endl;
         r=leftRotate(r);
     }
     else if(getBalance(r)<-1 && getBalance(r->right)==1){
-        //std::cout<<r->Word<<" HCM "<<NUM<<std::endl;
         r->right = rightRotate(r->right);
         r = leftRotate(r);
     }
     else if(getBalance(r)>1 && getBalance(r->left)==-1){
-        //std::cout<<r->Word<<" HDM "<<NUM<<std::endl;
         r->left = leftRotate(r->left);
         r = rightRotate(r);
     }   
@@ -120,10 +115,6 @@ node* AVL::leftRotate(node* x){
     x->parent = y;
 
     RefreshHeight(y);
-    /*
-    y->height = getHeight(y);
-    x->height = getHeight(x);
-    */
 
     return y;
 }
@@ -139,10 +130,6 @@ node* AVL::rightRotate(node* y){
     y->parent = x;
 
     RefreshHeight(x);
-    /*
-    y->height = getHeight(y);
-    x->height = getHeight(x);
-    */
 
     return x;
 }

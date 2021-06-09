@@ -22,14 +22,8 @@ Array::Array(char* filename){
     append(entry.c_str());
 
     while(file >> entry){                               // Loop that continues till every word is imported into the array
-        entry = My::better2low(entry.c_str());          // Converting the entry string into lower case for more information check the local function library
-        int pos = search(entry.c_str());                // Searches for the entry in the array, if it is found the function returns the position of the word into the integer variable pos, if it was not found it returns the negative value -1 into the pos variable 
-        if(pos!=-1){                                    // case for the word being found in the array
-            FREQ[pos]++;                                // increasing the frequency of the word
-        }
-        else{                                           // case for the word not being found in the array and thus appening it into the array
-            append(entry.c_str());                      // inserting the entry string into the array
-        }
+        entry = My::better2low(entry.c_str());          // Converting the entry string into lower case for more information check the local function library                                                                    
+        append(entry.c_str());                          // inserting the entry string into the array
     }
     std::cout << "Array's Construction was Successful" << std::endl; // Temporary output to sign the Finishing of the Array's construction
     std::remove("Temp.txt");                            // Deletes the temporary file
@@ -41,6 +35,14 @@ Array::~Array(){
 }
 
 void Array::append(const char* entry){
+
+    int pos = search(entry);                            // Searches for the entry in the array, if it is found the function returns the position of the word into the integer variable pos, if it was not found it returns the negative value -1 into the pos variable 
+
+    if(pos!=-1){                                        // case for the word being found in the array
+        FREQ[pos]++;                                    // increasing the frequency of the word
+        return;
+    }
+
     NUM++;                                              // increasing the integer that represents the size of the array
 
     // Temporary arrays that are copies of the original arrays (WORDS and FREQ)
@@ -94,7 +96,7 @@ void Array::remove(const char* del){
         WORDS = string_temp;
         FREQ = int_temp;
     }
-    else std::cout << "!!! ERROR WORD WAS NOT FOUND IN ARRAY !!!"; // Error message for the case in which the position of the word was not found
+    else std::cout << "!!! ERROR, WORD WAS NOT FOUND IN ARRAY !!!"<<std::endl; // Error message for the case in which the position of the word was not found
     return;
 }
 
@@ -111,17 +113,6 @@ void Array::print(){ // TEMPORARY
         output<<i<<"."<<WORDS[i]<<" "<<FREQ[i]<<std::endl;
     }
     output.close();
-}
-
-void Array::operator=(char * Fname){
-    Array temp(Fname); 
-    NUM = temp.GetNum(); 
-    WORDS = new std::string[NUM]; 
-    FREQ = new int[NUM]; 
-    for (int i = 0; i < NUM; i++) { 
-        WORDS[i] = temp.GetWord(i); 
-        FREQ[i]= temp.GetFrequency(i); 
-    } 
 }
 
 void Array::operator+=(const char* Entry){ append(Entry);}
