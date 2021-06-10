@@ -21,8 +21,18 @@ int main()
 	srand((unsigned)time(0));
 
 	char file_name[40];
-	cin >> file_name;
 	ifstream ifs;
+	bool FILE_EXIST=true;
+	
+	cout<<"Insert File Name:";
+	do{
+		if(!FILE_EXIST) cout<<"File Name does not exist\nEnter File Name that exists:";
+		cin >> file_name;
+		ifs.open(file_name);
+		FILE_EXIST = ifs.good();
+	}while(!FILE_EXIST);
+	cout<<"Program has started\nConstruction of the Data Structures might take a while \n";
+
 
 	Array a(file_name);
 	SortedArray b(file_name);
@@ -30,19 +40,13 @@ int main()
 	AVL d(file_name);
 	HashTable e(file_name);
 
-	ifs.open(file_name);
-	if (ifs.is_open())
-	{
-		cout << "File opened\n";
-	}
-	else cout << "File did not open";
-
 	const int size =rand() % 10001;
 
 	string * Q;
 	Q = new string[size];	
-
+	
 	createQ(Q, size,file_name);
+	
 
 	ofstream ofs("OUT.txt");
 	for(int i=0; i<size; i++){
@@ -55,6 +59,7 @@ int main()
 		ofs<<"\n\n";
 	}
 	ofs.close();
+	cout<<"The procedure was successful. Check the OUT.txt file to see the results.\n";
 }
 
 void createQ(string* Q, int size,char * file_name)
