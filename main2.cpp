@@ -80,15 +80,15 @@ void createQ(string* Q, int size,char * file_name)
 template<typename T>
 string PrintTime(T& a, const char* keyword){
 
-    string OUT;                                        // Output String
+    string OUT;                                        		// Output String
 
-    auto start = chrono::high_resolution_clock::now(); // Start Time
+    auto start = chrono::high_resolution_clock::now(); 		// Start Time
 
     auto i = a.search(keyword);
 
-    auto end = chrono::high_resolution_clock::now();   // End Time
+    auto end = chrono::high_resolution_clock::now();   		// End Time
 
-    chrono::duration<double, milli> fp_ms = end - start; // Duration (End - Start)
+    chrono::duration<double, milli> fp_ms = end - start; 	// Duration (End - Start)
     double time = fp_ms.count();                            // Duration to double (milliseconds)
 
     int Fz = a.GetFrequency(i);                             // Frequency
