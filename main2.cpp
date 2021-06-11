@@ -40,7 +40,7 @@ int main()
 	AVL d(file_name);
 	HashTable e(file_name);
 
-	const int size =rand() % 10001;
+	const int size =rand() % a.GetNum() % 10001;
 
 	string * Q;
 	Q = new string[size];	
