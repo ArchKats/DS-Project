@@ -20,10 +20,13 @@ int main()
 {
 	srand((unsigned)time(0));
 
-	char file_name[40];
+	char* file_name;
 	ifstream ifs;
 	bool FILE_EXIST=true;
+
+	file_name = (char*)"test.txt"; // name of the file
 	
+	/* Reads the name of the file from the keyboard
 	cout<<"Insert File Name:";
 	do{
 		if(!FILE_EXIST) cout<<"File Name does not exist\nEnter File Name that exists:";
@@ -31,8 +34,9 @@ int main()
 		ifs.open(file_name);
 		FILE_EXIST = ifs.good();
 	}while(!FILE_EXIST);
-	cout<<"Program has started\nConstruction of the Data Structures might take a while \n";
+	*/
 
+	cout<<"Program has started\nConstruction of the Data Structures may take a while \n";
 
 	Array a(file_name);
 	SortedArray b(file_name);
@@ -70,7 +74,7 @@ void createQ(string* Q, int size,char * file_name)
 		
 	while (ifs >> a&& i<size)
 	{
-		if ((rand()) % 2 == 1)
+		if ((rand()) % 5 == 1)
 		{
 			Q[i] = My::better2low(a.c_str());
 			i++;

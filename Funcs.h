@@ -28,6 +28,8 @@ static std::ifstream ClearFile(const char* filename) {
 
     while(std::getline(file, line)){
         std::replace_if(line.begin() , line.end() , [] (const char& c) { return std::ispunct(c) ;},' ');
+        for(int i=0; i<line.length(); i++)
+        if(line[i]>64&&line[i]<91) line[i] = char(line[i]+32);
         temp << line << std::endl;
     }
     file.close();

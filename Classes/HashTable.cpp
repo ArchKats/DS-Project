@@ -6,6 +6,10 @@
 
 int prime(int i);
 
+HashTable::HashTable(){
+    NUM=0;
+    MAX_SIZE = 0;
+}
 
 HashTable::HashTable(char* fname){
     std::ifstream file = My::ClearFile(fname);
@@ -13,8 +17,7 @@ HashTable::HashTable(char* fname){
     NUM = 0;
     MAX_SIZE = 0;
     while(file >> entry){
-        entry = My::better2low(entry.c_str());
-        if(append(entry.c_str())) NUM++;
+        append(entry.c_str());
     }
     std::cout << "Hash Table's Construction was Successful" << std::endl;
     std::remove("Temp.txt");
@@ -52,6 +55,7 @@ bool HashTable::append(const char* entry){
         }
         modif++;
     }
+    NUM++;
     return true;
 }
 
@@ -121,12 +125,4 @@ int HashTable::hash(const char* entry, int j){
 int prime(int i){
     int p[20] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43 ,47, 53, 59, 61 ,67 ,71};
     return p[i];
-}
-
-void HashTable::print(){
-    for(int i = 0; i < MAX_SIZE; i++){
-        if(Table[i]){
-            std::cout<<Table[i]->Word<<" "<<Table[i]->Frequency<<" "<<Table[i]->Key<<" "<<i<<std::endl;
-        }
-    }
 }

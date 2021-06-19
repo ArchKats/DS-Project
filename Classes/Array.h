@@ -15,6 +15,7 @@ class Array{
     std::string* WORDS;                     // The words 
     int* FREQ;                              // Frequency of each word
     int NUM;                                // Size of the array (amount of words)
+    int MAX_SIZE;                           // Maximum size of the array
 
     public:
 
@@ -32,9 +33,7 @@ class Array{
     virtual void append(const char*);       // Method that increases the size of the array
     void remove(const char*);               // Method that removes a string from the array
     virtual int search(const char*);        // Function that searches for the parameter string and returns a positive integer which represents the position of the word if it is found or returns the negative integer -1 if the word is not found
-
-    void print();                           // Temporary method that prints the array in a file
-
+    
     //Overload of some operators to represent some of the upper methods
     void operator+=(const char* Word);
     void operator-=(const char* Word);

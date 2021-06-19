@@ -9,12 +9,10 @@ AVL::AVL(char* fname){
     std::string entry;                                                              //         that removes all punctuation, after that for each word of the (temporary) file 
     NUM = 0;                                                                        //         it appends it in the BST correctly (inorder) and at the end of the construction it
     file >> entry;                                                                  //         it prints a message and deletes the Temporary file 
-    entry = My::better2low(entry.c_str());
     root = new node(entry.c_str());
     NUM++;
 
     while(file >> entry){
-        entry = My::better2low(entry.c_str());
         append(entry.c_str());
     }
     std::cout << "AVL Tree's Construction was Successful" << std::endl;

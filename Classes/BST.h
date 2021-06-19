@@ -50,8 +50,6 @@ class BST{
     node* search(const char*);                  // Method that searches the BST for a word
     void remove(const char*);                   // Method that removes a word from the BST
 
-    void print();
-
     void inorder(node*);                        // Prints the Words and Frequencies of the BST Inorder (recursively)
     void preorder(node*);                      // Prints the Words and Frequencies of the BST Preorder (recursively)
     void postorder(node*);                     // Prints the Words and Frequencies of the BST Postorder (recursively)

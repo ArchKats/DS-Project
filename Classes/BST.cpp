@@ -15,13 +15,11 @@ BST::BST(char* fname){                                                          
     std::string entry;                                                              //         that removes all punctuation, after that for each word of the (temporary) file 
     NUM = 0;                                                                        //         it appends it in the BST correctly (inorder) and at the end of the construction it
     file >> entry;                                                                  //         it prints a message and deletes the Temporary file 
-    entry = My::better2low(entry.c_str());
     root = new node(entry.c_str());
     NUM++;
 
     while(file >> entry){
-        entry = My::better2low(entry.c_str());
-        if(append(entry.c_str())) NUM++;
+        append(entry.c_str());
     }
     std::cout << "Binary Search Tree's Construction was Successful" << std::endl;
     std::remove("Temp.txt");
@@ -52,8 +50,8 @@ void BST::deleteTree(node* r){
 
 }
 
-bool BST::append(const char* entry){                                                // The append method returns the boolean value true if the entry was Successfully inserted into the BST 
-    if(root == nullptr){                                                           // or false if the entry was not succesfull
+bool BST::append(const char* entry){                                            // The append method returns the boolean value true if the entry was Successfully inserted into the BST 
+    if(root == nullptr){                                                            // or false if the entry was not succesfull
         root = new node(entry);                                                     // the Append method checks if the tree is empty (no root), if
         return true;                                                                // it finds that there is no root it appends the entry as the root
     }
@@ -69,6 +67,7 @@ bool BST::append(node* ND, const char* entry){
         if(ND->right==nullptr){                                                     // It does that untill it finds the right (empty) in which point it enters the entry word and the appending method concludes
             ND->right = new node(entry);                                        
             ND->right->parent = ND;
+            NUM++;
             return true;
         }
         return append(ND->right, entry);
@@ -77,6 +76,7 @@ bool BST::append(node* ND, const char* entry){
         if(ND->left==nullptr){
             ND->left = new node(entry);
             ND->left->parent = ND;
+            NUM++;
             return true;
         }
         return append(ND->left, entry);
@@ -85,12 +85,12 @@ bool BST::append(node* ND, const char* entry){
 
 
 node* BST::search(const char* entry){                                              // Searches the whole tree for a (key) word 
-
     node *p;
 
     if(root == nullptr){                                                            // in the case of the root BST being empty it prints out a warning message and then stops the search
         std::cout << "!!!Search of Empty BST was attempted!!!";
         p = new node();
+        p->Frequency = -1;
         return p;
     }
 
@@ -101,11 +101,6 @@ node* BST::search(const char* entry){                                           
         else               p = p->left;                                             // moves the temporary node from the parent node to the left node because the word is (alphabetically) smaller
     }
     return p;
-}
-
-
-void BST::print(){                                                                  // TEMPORARY FUNCTIONS
-    inorder(root);
 }
 
 void BST::remove(const char* key){                                                  // Calls the recursive remove function from the root

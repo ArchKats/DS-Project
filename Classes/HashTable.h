@@ -47,11 +47,11 @@ class HashTable{
     ~HashTable();                                               // Destructor for the Hash Table
 
     int GetFrequency(int i) const { return Table[i]->Frequency; }
+    int GetNum()                  {return NUM;}
 
     int search(const char*);                                    // Search method that searches through the hash method if the word is present in the hash table, if it is present it returns the key of the object if it isnt it returns -1
     bool append(const char*);                                   // Appends a word into the hash table
 
-    void print();
 
     private: 
 
