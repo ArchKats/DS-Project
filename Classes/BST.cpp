@@ -176,11 +176,11 @@ void BST::postorder(node* tree){
 node* BST::Ever(const char* Dir, node* r){
     if(r==nullptr) return r;
     node* temp = r;
-
-    if(Dir==(char*)"last"){
+    
+    if(strcmp(Dir,"last")==0){
         while(temp && temp->left) temp = temp->left;
     }
-    else if(Dir==(char*)"first"){
+    else if(strcmp(Dir,"first")==0){
         while(temp && temp->right) temp = temp->right;
     }
     return temp;
